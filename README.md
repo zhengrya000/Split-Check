@@ -43,8 +43,8 @@ be quietly charged to the group.
 Requires [Node.js](https://nodejs.org) 20.19+ or 22.12+ (what Vite 8 needs).
 
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git clone https://github.com/zhengrya000/Split-Check.git
+cd Split-Check
 npm install
 npm run dev
 ```
