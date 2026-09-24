@@ -1,0 +1,719 @@
+:root {
+  --bg: #f6f6f4;
+  --card: #ffffff;
+  --ink: #16191d;
+  --ink-soft: #5f6672;
+  --ink-faint: #8b929c;
+  --line: #e6e6e2;
+  --accent: #0f7360;
+  --accent-dark: #0b5a4b;
+  --accent-soft: #e8f2ef;
+  --warn: #9a5b06;
+  --warn-soft: #fdf3e2;
+  --danger: #b3261e;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(22, 25, 29, 0.04), 0 6px 20px rgba(22, 25, 29, 0.05);
+
+  color-scheme: light; /* keep the light palette even if the OS is in dark mode */
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder {
+  color: var(--ink-faint);
+}
+
+input:hover:not(:disabled) {
+  border-color: #d3d3ce;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- page + header */
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.header-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 2.25rem;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  color: var(--ink-soft);
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--warn-soft);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--warn);
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+button.primary:hover:not(:disabled) {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+button.ghost {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+button.ghost:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+button.danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.55rem;
+  color: var(--accent-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ cards */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.card-head h2 {
+  font-size: 1.1rem;
+}
+
+.badge {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.copy {
+  margin-left: auto;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ------------------------------------------------------------------ forms */
+
+.inline-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.price-field {
+  width: 6.5rem;
+}
+
+.hint {
+  margin: 0.75rem 0 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.error {
+  margin: 0.6rem 0 0;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.note {
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.empty strong {
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------- people */
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.person-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.45rem 0.3rem 0.35rem;
+  box-shadow: 0 1px 2px rgba(22, 25, 29, 0.04);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.person-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  color: var(--ink-faint);
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 999px;
+}
+
+.chip-remove:hover {
+  color: var(--danger);
+}
+
+/* -------------------------------------------------------------- selector */
+
+.selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.toggle {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.28rem 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.87rem;
+}
+
+.toggle:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.toggle.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.toggle.everyone {
+  border-style: dashed;
+}
+
+/* ------------------------------------------------------------------ items */
+
+.item-form {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bill-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bill-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.bill-item.unassigned {
+  background: var(--warn-soft);
+  border-radius: 12px;
+  border-bottom: none;
+  padding: 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.bill-item-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.item-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.item-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.item-note {
+  margin: 0.55rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.item-note.warning {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- tax/tip */
+
+.rate-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
+}
+
+.rate-row label {
+  width: 2.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.rate-input {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.rate-input input {
+  width: 100%;
+  padding-right: 2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.percent {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.rate-amount {
+  width: 5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------- summary */
+
+.summary {
+  margin: 0;
+}
+
+.summary div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+}
+
+.summary dt {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.summary dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.rate-tag {
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+}
+
+.summary-total {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem !important;
+  border-top: 1px solid var(--line);
+}
+
+.summary-total dt {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.summary-total dd {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* ---------------------------------------------------------------- totals */
+
+.warning-banner {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-radius: 10px;
+  font-size: 0.88rem;
+}
+
+.total-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.9rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.total-card {
+  background: #fbfbf9;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.total-card.biggest {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.total-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.total-name {
+  font-weight: 600;
+}
+
+.total-amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.total-parts {
+  display: flex;
+  gap: 1rem;
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.total-parts div {
+  display: flex;
+  flex-direction: column;
+}
+
+.total-parts dt {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+}
+
+.total-parts dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.receipt {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0.6rem 0 0;
+  border-top: 1px dashed var(--line);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.receipt li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.12rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt-extra {
+  color: var(--ink-faint);
+}
+
+.fraction {
+  color: var(--ink-faint);
+}
+
+.footer {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 1.5rem 0.9rem 3rem;
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.85rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .inline-form {
+    flex-wrap: wrap;
+  }
+
+  .price-field {
+    width: 5.5rem;
+  }
+
+  .inline-form .primary {
+    flex: 1;
+  }
+
+  .total-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-head {
+    flex-wrap: wrap;
+  }
+}
+
+/* On wide screens the items list is much taller than the sidebar, so the
+   summary follows you down the page instead of scrolling out of sight. */
+@media (min-width: 901px) {
+  .side-column {
+    position: sticky;
+    top: 1.25rem;
+  }
+}
